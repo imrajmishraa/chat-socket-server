@@ -12,6 +12,10 @@ if (!process.env.VERCEL) {
   connectDB().catch((err) => {
     console.log("⁉️MongoDB connection error", err);
   });
+
+  app.listen(PORT, () => {
+    console.log(`Server running on port: ${PORT}`);
+  });
 }
 
 export default app;

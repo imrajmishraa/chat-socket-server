@@ -1,0 +1,36 @@
+{
+  "name": "twingllo",
+  "version": "1.0.0",
+  "description": "a complete chat-server's backend",
+  "homepage": "https://github.com/imrajmishraa/chat-socket-server#readme",
+  "bugs": {
+    "url": "https://github.com/imrajmishraa/chat-socket-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imrajmishraa/chat-socket-server.git"
+  },
+  "license": "ISC",
+  "author": "Raj Mishra",
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write .",
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "test": "tsx --test src/services/**/*.test.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.2",
+    "mongoose": "^9.7.4",
+    "node": "^26.4.0",
+    "prettier": "^3.9.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.0",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3"
+  }
+}

@@ -17,6 +17,17 @@ app.use(async (req, res, next) => {
   }
 });
 
+// connection checkup
+app.get("/", (req, res) => {
+  res.send("Hello");
+});
+
+// import routes
+import healthzRouter from "./routes/healthz/healthz.route";
+
+// managed routes
+app.use("/api/v1/", healthzRouter);
+
 // Error Middleware (Must be last)
 import { errorHandler } from "./middlewares/error";
 app.use(errorHandler);

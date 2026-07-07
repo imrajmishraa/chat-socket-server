@@ -1,5 +1,6 @@
 import { ENV } from "../constants/env";
 import { missingEnvVariable } from "../errors/env";
+import "dotenv";
 
 function getEnv(name: string): string {
   const value = process.env[name];

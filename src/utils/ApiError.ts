@@ -1,21 +1,22 @@
-class ApiError extends Error {
+export class ApiError extends Error {
   public readonly statusCode: number;
-  public readonly success: boolean;
+  public readonly success = false;
   public readonly errors: unknown[];
-  public readonly data: null;
+  public readonly data: unknown;
+  public readonly isOperational = true;
 
   constructor(
     statusCode: number,
-    message: string = "something went wrong",
-    errors: unknown[],
+    message = "Something went wrong",
+    errors: unknown[] = [],
+    data: unknown = null,
     stack?: string,
   ) {
     super(message);
 
     this.statusCode = statusCode;
-    this.success = false;
     this.errors = errors;
-    this.data = null;
+    this.data = data;
 
     if (stack) {
       this.stack = stack;
@@ -24,5 +25,3 @@ class ApiError extends Error {
     }
   }
 }
-
-export { ApiError };

@@ -1,26 +1,20 @@
-import { ApiError } from "../utils/ApiError";
 import { Request, Response, NextFunction } from "express";
 
+import { normalizeError } from "../errors/normalizeError";
+
 const errorHandler = (
-  err: ApiError,
+  err: unknown,
   req: Request,
   res: Response,
-  next: NextFunction,
+  _next: NextFunction,
 ) => {
-  if (err instanceof ApiError) {
-    return res.status(err.statusCode).json({
-      success: err.success,
-      message: err.message,
-      errors: err.errors,
-      data: err.data,
-    });
-  }
+  const error = normalizeError(err);
 
-  return res.status(500).json({
-    success: false,
-    message: "internal server error",
-    errors: [],
-    data: null,
+  return res.status(error.statusCode).json({
+    success: error.success,
+    message: error.message,
+    errors: error.errors,
+    data: error.data,
   });
 };
 
